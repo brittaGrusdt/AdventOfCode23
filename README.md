@@ -18,5 +18,8 @@ This repository contains my solutions implemented in Java for the Advent of Code
 ## Day 2
 
 - *Task1*: 
+    - For each line create an instance of class 'Game' which has an id and a set of CubeSets. Each CubeSet is a record with fields 'blue', 'green' and 'red' as once revealed, they do not change anymore.
+    - For a given configuration (specific predefined CubeSet), check whether game is possible: iterate through the game's Set of CubeSets and check whether there colors that were revealed more often than in given configuration (game not possible if there are only  x red, but > x revealed)
 
 - *Task2*:
+	- For the minimal possible configuration, retrieve for each game, the maximal number of revealed cubes per color; e.g. if in one of two CubeSets, 10 red cubes are revealed and in the other 2, 10 is the minimal number of red cubes necessary for that game to be possible
