@@ -1,6 +1,5 @@
 package day2;
 
-import java.util.Map;
 import java.util.Set;
 
 public class Game {
