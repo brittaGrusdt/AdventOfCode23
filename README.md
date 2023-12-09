@@ -23,3 +23,24 @@ This repository contains my solutions implemented in Java for the Advent of Code
 
 - *Task2*:
 	- For the minimal possible configuration, retrieve for each game, the maximal number of revealed cubes per color; e.g. if in one of two CubeSets, 10 red cubes are revealed and in the other 2, 10 is the minimal number of red cubes necessary for that game to be possible
+	
+
+## Day 3
+
+- *Task1*:
+	- First, save all symbols with their indices and the symbol itself.
+	- For each line retrieve all numbers with a regex, get the indices (SearchGrid) around that number. At these indices, check whether there is any symbol, if yes, it is a PartNumber, otherwise it isn't. 
+	
+- *Task2*: 
+	- iterate over all symbols and check retrieve the corresponding search grid around the symbol to retrieve all adjacent partNumbers in the grid. The grid is always just 3x3 since each symbol has length 1. 
+	- Be sure that cases like the one shown below are covered, for the '*' in line 2, 1667 is an adjacent PartNumber, but it starts before the searchGrid starts looking for it!
+		
+```
+1667.
+..*..
+.3..#
+```
+
+	
+	
+	
