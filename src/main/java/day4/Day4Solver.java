@@ -2,8 +2,11 @@ package day4;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import utils.Solver;
 
@@ -11,7 +14,16 @@ public class Day4Solver extends Solver{
 	
 	private List<List<Integer>> numbers;
 	private List<Card> cards;
+	private Map<Integer, Integer> copiedCards;
 	
+	public Map<Integer, Integer> getCopiedCards() {
+		return copiedCards;
+	}
+
+	public void setCopiedCards(Map<Integer, Integer> copiedCards) {
+		this.copiedCards = copiedCards;
+	}
+
 	public Day4Solver(String path, String filename) {
 		super(path, filename);
 		List<List<Integer>> numbers = new ArrayList<List<Integer>>();
@@ -25,6 +37,7 @@ public class Day4Solver extends Solver{
 		}
 		this.numbers = numbers;
 		this.cards = cards;
+		this.copiedCards = new HashMap<Integer, Integer>();
 	}
 	
 	public List<List<Integer>> getNumbers() {
@@ -46,7 +59,25 @@ public class Day4Solver extends Solver{
 	}
 	
 	public String runTask2() {
-		return "not yet implemented!";
+		for(int i=0; i<cards.size(); i++) {
+			Card card = cards.get(i);
+			int cardID = card.getId();
+			int nbMatches = card.getNumberMatches(numbers.get(i));
+			//check if there are copies of current card 
+			IntStream stream = IntStream.range(cardID+1, cardID + nbMatches+1);
+			int nbCopiesOfCard = copiedCards.getOrDefault(cardID, 0);
+			
+			stream.forEach(num -> {
+				int nbExistingCopies = copiedCards.getOrDefault(num, 0);
+				copiedCards.put(num, nbExistingCopies + 1 + nbCopiesOfCard);
+			});
+		}		
+		
+		int nbCopiedCards = copiedCards.values().stream().mapToInt(Integer::intValue).sum();
+		int nbTotalCards = nbCopiedCards + cards.size();
+		
+		System.out.println("The Elf's pile of scratchcards contains " + nbTotalCards + " cards.");
+		return String.valueOf(nbTotalCards);
 	}
 
 	
@@ -56,6 +87,7 @@ public class Day4Solver extends Solver{
 //			System.out.println(line);
 //		}
 		solver.runTask1();
+		solver.runTask2();
 	}
 
 

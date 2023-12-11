@@ -43,6 +43,11 @@ public class TestDay4 {
 			assertTrue(CollectionUtils.isEqualCollection(solver.getCards().get(i).getWinningNumbers(), 
 					winningNumbers.get(i)));
 		}
-
+	}
+	
+	@Test
+	void testTask2() {
+		int nbCards = Integer.parseInt(solver.runTask2());
+		assertTrue(nbCards == 30);
 	}
 }

@@ -34,9 +34,14 @@ public class Card {
 	}
 	
 	
-	public double computeCardValue(List<Integer> numbers) {
+	public int getNumberMatches(List<Integer> numbers) {
 		int nbMatches = numbers.stream().filter(n -> winningNumbers.contains(n)).
-			collect(Collectors.toList()).size();
+				collect(Collectors.toList()).size();
+		return nbMatches;
+	}
+	
+	public double computeCardValue(List<Integer> numbers) {
+		int nbMatches = getNumberMatches(numbers);
 		return  nbMatches == 0 ? 0 : Math.pow(2, nbMatches-1); 
 	}
 }
