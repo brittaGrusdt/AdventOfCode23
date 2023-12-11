@@ -1,4 +1,4 @@
-package aoc23.day1;
+package test.day1;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
