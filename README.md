@@ -9,9 +9,7 @@ This repository contains my solutions implemented in Java for the Advent of Code
 
 - *Task2*: 
     - For each input line, retrieve first and last digit as in Task1. 
-    
     - For each input line iterate over all digit-strings ("one", "two", ...) and check whether they are present in the input string. If yes, remember the index where it was found in the input string. If any other written out digit is present in the input string, check whether it occurs before the number that had been found before for finding the first occurrence (or after for finding the last occurrence).
-    
     - Then, check whether the index of the first occurrence of the first found digit is before the first occurrence of the first found written digit, do the same for the last occurrences of found digits.
 
     
@@ -21,19 +19,18 @@ This repository contains my solutions implemented in Java for the Advent of Code
     - For each line create an instance of class 'Game' which has an id and a set of CubeSets. Each CubeSet is a record with fields 'blue', 'green' and 'red' as once revealed, they do not change anymore.
     - For a given configuration (specific predefined CubeSet), check whether game is possible: iterate through the game's Set of CubeSets and check whether there colors that were revealed more often than in given configuration (game not possible if there are only  x red, but > x revealed)
 
-- *Task2*:
-	- For the minimal possible configuration, retrieve for each game, the maximal number of revealed cubes per color; e.g. if in one of two CubeSets, 10 red cubes are revealed and in the other 2, 10 is the minimal number of red cubes necessary for that game to be possible
+- *Task2*: for the minimal possible configuration, retrieve for each game, the maximal number of revealed cubes per color; e.g. if in one of two CubeSets, 10 red cubes are revealed and in the other 2, 10 is the minimal number of red cubes necessary for that game to be possible
 	
 
 ## Day 3
 
 - *Task1*:
 	- First, save all symbols with their indices and the symbol itself.
-	- For each line retrieve all numbers with a regex, get the indices (SearchGrid) around that number. At these indices, check whether there is any symbol, if yes, it is a PartNumber, otherwise it isn't. 
+    - For each line retrieve all numbers with a regex, get the indices (SearchGrid) around that number. At these indices, check whether there is any symbol, if yes, it is a PartNumber, otherwise it isn't. 
 	
 - *Task2*: 
 	- iterate over all symbols and check retrieve the corresponding search grid around the symbol to retrieve all adjacent partNumbers in the grid. The grid is always just 3x3 since each symbol has length 1. 
-	- Be sure that cases like the one shown below are covered, for the '*' in line 2, 1667 is an adjacent PartNumber, but it starts before the searchGrid starts looking for it!
+    - Be sure that cases like the one shown below are covered, for the '*' in line 2, 1667 is an adjacent PartNumber, but it starts before the searchGrid starts looking for it!
 		
 ```
 1667.
@@ -41,6 +38,16 @@ This repository contains my solutions implemented in Java for the Advent of Code
 .3..#
 ```
 
+## Day 4
+
+For me, this was the easiest day so far!
+
+- *Task1*: for each card, get the number of matches wrt the Elf's own cards (right of pipe). For the Elf, the card is worth 2^(nbMatches-1) points given that nbMatches>= 1. If nbMatches equals 0, the card is worth no points. 
+
+- *Task2*:
+	- Again, for each card, get the number of matches wrt the Elf's own cards. 
+    - Iterate over cards and make copies as instructed for that card and one for each of the already existing copies of that card. Remember the number of copies for each card in a Map, mapping from the card id to the number of copies already won for that card.
+    - sum up the values of that Map and add the number of original cards (nb. of input lines)
 	
 	
 	
