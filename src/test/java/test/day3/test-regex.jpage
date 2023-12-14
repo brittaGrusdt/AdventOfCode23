@@ -1,8 +1,0 @@
-String line = "467.$asdfb...*.114..";
-//java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("[^\\d+\\.]");
-java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("\\d+");
-java.util.regex.Matcher matcher = pattern.matcher(line);
-while(matcher.find()){
-	System.out.println(matcher.group());	
-}
-System.out.println();
