@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import aoc.utils.AdventOfCode;
+import utils.AdventOfCode;
 
 public class Day2Solver {
 	

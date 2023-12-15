@@ -10,7 +10,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import aoc.utils.AdventOfCode;
+import utils.AdventOfCode;
 import day3.EngineSchema;
 import day3.PartNumber;
 import day3.Symbol;

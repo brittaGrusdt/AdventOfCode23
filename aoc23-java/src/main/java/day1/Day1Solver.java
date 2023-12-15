@@ -3,7 +3,7 @@ package day1;
 import java.util.List;
 import java.util.Scanner;
 
-import aoc.utils.AdventOfCode;
+import utils.AdventOfCode;
 
 public class Day1Solver {
 

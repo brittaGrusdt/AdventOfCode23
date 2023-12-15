@@ -3,7 +3,8 @@ package day3;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import aoc.utils.AdventOfCode;
+import utils.AdventOfCode;
+
 
 public class Day3Solver {
 

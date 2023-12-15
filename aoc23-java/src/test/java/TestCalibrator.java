@@ -9,7 +9,7 @@ import java.util.Scanner;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
 
-import aoc.utils.AdventOfCode;
+import utils.AdventOfCode;
 import day1.Calibrator;
 
 class TestCalibrator {

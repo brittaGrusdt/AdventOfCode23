@@ -12,7 +12,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import aoc.utils.AdventOfCode;
+import utils.AdventOfCode;
 import day2.CubeSet;
 import day2.Day2Solver;
 import day2.Game;
