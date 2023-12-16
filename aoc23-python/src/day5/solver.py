@@ -1,4 +1,3 @@
-import pathlib
 import re
 from typing import List, Sequence
 
@@ -9,12 +8,8 @@ from day5.mapper import Mapper
 
 
 class Day5Solver(Solver):
-    def __init__(self, filename: str, absolute_path: str = "") -> None:
-        if not absolute_path:
-            absolute_path = str(
-                pathlib.Path(__file__).parents[2] / "resources" / filename
-            )
-        super().__init__(absolute_path)
+    def __init__(self, filename: str, isTestFile: bool) -> None:
+        super().__init__(filename, isTestFile)
         digits: list[int] = list(map(int, re.findall(r"\d+", self.input_lines[0])))
 
         self.seeds: Sequence[int] = digits
