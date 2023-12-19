@@ -1,8 +1,7 @@
-# from day5.solver import Day5Solver
-from day6.solver import Day6Solver
+from day7.solver import Day7Solver
 
-filename: str = "day6.txt"
-solver = Day6Solver(filename, isTestFile=False)
+filename: str = "day7.txt"
+solver = Day7Solver(filename, isTestFile=False)
 
 solver.run_task1()
-solver.run_task2()
+# solver.run_task2()

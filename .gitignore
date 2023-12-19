@@ -4,3 +4,5 @@
 .settings/
 target/
 .Rproj.user
+.pyc
+__pycache__/
