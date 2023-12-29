@@ -49,7 +49,7 @@ class Day8Solver(Solver):
         #     print(f"number iterations: {num_iter}, zzz reached: {all_end_with_z}")
 
     def find_least_commmon_multiple(self, iterations: List[List[int]]) -> float:
-        combinations: List[Tuple[int]] = list(itertools.product(*iterations))
+        combinations: List[Tuple[int]] = list(itertools.product(*iterations))  # type: ignore
         least_common_multiple: float = math.inf
         for combi in combinations:
             lcm: float = math.lcm(*combi)

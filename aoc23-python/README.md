@@ -42,3 +42,16 @@ This folder contains my solutions implemented in Python for the Advent of Code p
         - iter9: right ZZZ 2: stop here, because same has been reached after 6 iterations, so we know how it would continue from here on
     - further, remember that a node ending with 'Z' is reached after 6, 7 and 8 iterations
     - do this for all starting nodes and compute the least common multiple (lcm) of each combination of iterations, e.g. if for start node 1, after 3 and 4 iterations, nodes ending with 'Z' are reached and for start node 2 only after 2 iterations such node is reached, we take the lcm of all combinations, that is, of [2,3] and of [2,4] which are 6 and 4 respectively. From these we take the smallest one, which in this case is 4.
+
+
+### Day 9
+* Task1:
+    - each input line of numbers as list of ints (numbers), for each do the following:
+    - differences = numbers[1:] - numbers[:-1]
+    - repeat subtraction until all elements of the vector differences are equal to 0, note that entries can become negative, so it is important to really check that all elements equal 0, instead of for instance checking that the sum over entries equals 0!
+    - the extrapolated value for this line of numbers is the sum of all last elements of the respective input vector (numbers), the size of which is reduced after each subtraction
+
+* Task2
+    - save the first number of each line and iterate through that list from end to beginning. 
+    - the extrapolated value for each line is the number from the list iterated over minus the previous extrapolated value (starting with 0)
+    - logic around extrapolation is the same as for task1
