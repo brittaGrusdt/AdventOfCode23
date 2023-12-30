@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "aoc23"
+version = "0.1.0"
+description = "Advent of code solutions 2023"
+authors = ["Britta Grusdt <bgrusdt@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^1.26.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.pyright]
+reportMissingTypeStubs = false
