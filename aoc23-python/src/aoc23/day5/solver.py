@@ -1,15 +1,16 @@
+import pathlib
 import re
 from typing import List, Sequence
 
 import numpy as np
-from utils.solver import Solver
 
-from day5.mapper import Mapper
+from ..utils.solver import Solver
+from .mapper import Mapper
 
 
 class Day5Solver(Solver):
-    def __init__(self, filename: str, isTestFile: bool) -> None:
-        super().__init__(filename, isTestFile)
+    def __init__(self, path_to_input_file: pathlib.Path) -> None:
+        super().__init__(path_to_input_file)
         digits: list[int] = list(map(int, re.findall(r"\d+", self.input_lines[0])))
 
         self.seeds: Sequence[int] = digits

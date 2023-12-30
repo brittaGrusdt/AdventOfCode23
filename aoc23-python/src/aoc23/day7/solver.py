@@ -1,14 +1,15 @@
+import pathlib
 from typing import List
 
-from day7.camelcard import Hand
-from utils.solver import Solver
+from ..utils.solver import Solver
+from .camelcard import Hand
 
 
 class Day7Solver(Solver):
     def __init__(
-        self, filename: str, isTestFile: bool, use_joker: bool = False
+        self, path_to_input_file: pathlib.Path, use_joker: bool = False
     ) -> None:
-        super().__init__(filename, isTestFile)
+        super().__init__(path_to_input_file)
         self.hands: List[Hand] = []
         for line in self.input_lines:
             hand = Hand(line, use_joker)
@@ -16,8 +17,8 @@ class Day7Solver(Solver):
         self.sort_hands()
 
     @classmethod
-    def create(cls, filename: str, isTestFile: bool, use_joker: bool) -> "Day7Solver":
-        return cls(filename, isTestFile, use_joker)
+    def create(cls, path_to_input_file: pathlib.Path, use_joker: bool) -> "Day7Solver":
+        return cls(path_to_input_file, use_joker)
 
     def sort_hands(self) -> None:
         self.hands.sort(key=lambda hand: (hand.type.value, hand.strengths))

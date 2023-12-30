@@ -1,14 +1,15 @@
 import itertools
 import math
+import pathlib
 from typing import List, Tuple
 
-from day8.haunted_wasteland import Network, Node
-from utils.solver import Solver
+from ..utils.solver import Solver
+from .haunted_wasteland import Network, Node
 
 
 class Day8Solver(Solver):
-    def __init__(self, filename: str, isTestFile: bool) -> None:
-        super().__init__(filename, isTestFile)
+    def __init__(self, path_to_input_file: pathlib.Path) -> None:
+        super().__init__(path_to_input_file)
         self.network: Network = Network(self.input_lines)
 
     def get_next_nodes(self, current_nodes: List[str], num_iter: int) -> List[str]:

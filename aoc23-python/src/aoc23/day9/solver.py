@@ -1,13 +1,15 @@
+import pathlib
 import re
 from typing import Any, List
 
 import numpy as np
-from utils.solver import Solver
+
+from ..utils.solver import Solver
 
 
 class Day9Solver(Solver):
-    def __init__(self, filename: str, isTestFile: bool) -> None:
-        super().__init__(filename, isTestFile)
+    def __init__(self, path_to_input_file: pathlib.Path) -> None:
+        super().__init__(path_to_input_file)
         self.numbers: List[List[int]] = []
         for line in self.input_lines:
             numbers: List[str] = re.split("\\s+", line)

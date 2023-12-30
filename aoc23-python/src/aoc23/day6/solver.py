@@ -1,13 +1,14 @@
 import math
+import pathlib
 import re
 from typing import List, Sequence, Tuple
 
-from utils.solver import Solver
+from ..utils.solver import Solver
 
 
 class Day6Solver(Solver):
-    def __init__(self, filename: str, isTestFile: bool) -> None:
-        super().__init__(filename, isTestFile)
+    def __init__(self, path_to_input_file: pathlib.Path) -> None:
+        super().__init__(path_to_input_file)
         durations: List[int] = list(map(int, re.split("\\s+", self.input_lines[0])[1:]))
         min_distances: List[int] = list(
             map(int, re.split("\\s+", self.input_lines[1])[1:])
