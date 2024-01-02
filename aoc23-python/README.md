@@ -63,3 +63,4 @@ This folder contains my solutions implemented in Python for the Advent of Code p
     - thus save universe with a list of galaxies, each of which has attributes *id*, *row* and *col*
 
 * Task2:
+    - just change the number of replaced lines (for task1 these were two for each empty row or col)
