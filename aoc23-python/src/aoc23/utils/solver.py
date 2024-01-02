@@ -3,8 +3,19 @@ from abc import ABC, abstractmethod
 from typing import List
 
 
-def compute_path_to_input_file(path_to_calling_module: str) -> pathlib.Path:
-    return pathlib.Path(path_to_calling_module).with_name("input.txt")
+def compute_path_to_input_file(
+    path_to_calling_module: str, name_test_file: str = ""
+) -> pathlib.Path:
+    if name_test_file != "":
+        computed_path: pathlib.Path = (
+            pathlib.Path(path_to_calling_module).parent / "resources" / name_test_file
+        )
+    else:
+        # path_to_calling_module should be __main__.py, with_name replaces the final path component!
+        computed_path: pathlib.Path = pathlib.Path(path_to_calling_module).with_name(
+            "input.txt"
+        )
+    return computed_path
 
 
 class Solver(ABC):
@@ -25,6 +36,5 @@ class Solver(ABC):
         return lines
 
     def __init__(self, path_to_input_file: pathlib.Path) -> None:
-        print(path_to_input_file)
         self.path_to_file: pathlib.Path = path_to_input_file
         self.input_lines: List[str] = self.read_input(self.path_to_file)

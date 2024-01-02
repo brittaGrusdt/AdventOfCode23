@@ -8,7 +8,9 @@ from aoc23.utils.solver import compute_path_to_input_file
 class TestTask1(unittest.TestCase):
     def setUp(self) -> None:
         """is run before every test method"""
-        path_to_input_file: pathlib.Path = compute_path_to_input_file(__file__)
+        path_to_input_file: pathlib.Path = compute_path_to_input_file(
+            __file__, "test-day9.txt"
+        )
         self.solver: Day9Solver = Day9Solver(path_to_input_file)
         # TODO: here a mockup is probably better?! or is it ok to use external files for testing?
 
