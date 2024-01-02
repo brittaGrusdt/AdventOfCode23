@@ -55,3 +55,11 @@ This folder contains my solutions implemented in Python for the Advent of Code p
     - save the first number of each line and iterate through that list from end to beginning. 
     - the extrapolated value for each line is the number from the list iterated over minus the previous extrapolated value (starting with 0)
     - logic around extrapolation is the same as for task1
+
+
+### Day 11
+* Task1:
+    - to compute the distance, count the number of columns and rows in between each  pair of galaxies
+    - thus save universe with a list of galaxies, each of which has attributes *id*, *row* and *col*
+
+* Task2:
