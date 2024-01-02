@@ -18,7 +18,13 @@ class Galaxy:
 
 
 class Universe:
-    def __init__(self, galaxies: List[Galaxy], nb_rows: int, nb_cols: int) -> None:
+    def __init__(
+        self,
+        galaxies: List[Galaxy],
+        nb_rows: int,
+        nb_cols: int,
+        expand_by: int,
+    ) -> None:
         # initialize original universe
         self.original_nb_rows: int = nb_rows
         self.original_nb_cols: int = nb_cols
@@ -27,7 +33,7 @@ class Universe:
         )
         # initialize expanded universe
         self.expanded_galaxies: List[Galaxy] = copy.deepcopy(self.original_galaxies)
-        (nb_added_rows, nb_added_cols) = self.expand()
+        (nb_added_rows, nb_added_cols) = self.expand(expand_by)
         self.expanded_nb_rows: int = nb_rows + nb_added_rows
         self.expanded_nb_cols: int = nb_cols + nb_added_cols
         self.expaneded_galaxies: List[Galaxy] = sorted(
@@ -35,7 +41,7 @@ class Universe:
         )
 
     @classmethod
-    def create(cls, input_lines: List[str]) -> "Universe":
+    def create(cls, input_lines: List[str], expand_by: int = 2) -> "Universe":
         galaxies: List[Galaxy] = []
         for idx_row, line in enumerate(input_lines):
             num_occ: int = line.count("#")
@@ -45,9 +51,11 @@ class Universe:
                 galaxy: Galaxy = Galaxy(len(galaxies) + 1, idx_row, idx_col)
                 search_from_idx = idx_col + 1
                 galaxies.append(galaxy)
-        return cls(galaxies, len(input_lines), len(input_lines[0]))
+        return cls(galaxies, len(input_lines), len(input_lines[0]), expand_by)
 
-    def __update_rows_columns(self, indices_no_galaxies: List[int], axis: int) -> int:
+    def __update_rows_columns(
+        self, indices_no_galaxies: List[int], axis: int, num_added_empty_lines: int
+    ) -> int:
         """updates the indices of the galaxies of this universe. Rows/Columns without galaxies count as twice as big.
         axis=1 refers to rows, axis=0 refers to columns."""
         num_added: int = 0
@@ -74,13 +82,13 @@ class Universe:
             )
             for galaxy in galaxies:
                 if axis == 1:
-                    galaxy.row += 1
+                    galaxy.row += num_added_empty_lines
                 else:
-                    galaxy.col += 1
+                    galaxy.col += num_added_empty_lines
             num_added += 1
         return num_added
 
-    def expand(self) -> Tuple[int, int]:
+    def expand(self, expand_by: int) -> Tuple[int, int]:
         rows_with_galaxies: List[int] = list(
             map(lambda galaxy: galaxy.row, self.original_galaxies)
         )
@@ -96,8 +104,12 @@ class Universe:
             col for col in range(self.original_nb_cols) if col not in cols_with_galaxies
         ]
 
-        num_added_rows: int = self.__update_rows_columns(rows_no_galaxies, 1)
-        num_added_cols: int = self.__update_rows_columns(cols_no_galaxies, 0)
+        num_added_rows: int = self.__update_rows_columns(
+            rows_no_galaxies, 1, expand_by - 1
+        )
+        num_added_cols: int = self.__update_rows_columns(
+            cols_no_galaxies, 0, expand_by - 1
+        )
         return (num_added_rows, num_added_cols)
 
     def compute_shortest_paths(self) -> List[Dict[str, int]]:

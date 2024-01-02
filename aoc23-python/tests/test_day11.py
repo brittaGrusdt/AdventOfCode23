@@ -6,13 +6,15 @@ from aoc23.day11.solver import Day11Solver
 from aoc23.utils.solver import compute_path_to_input_file
 
 
-class TestUniverse(unittest.TestCase):
+class TestUniverseTask1(unittest.TestCase):
     def setUp(self) -> None:
         """is run before every test method"""
         self.solver: Day11Solver = Day11Solver(
             compute_path_to_input_file(__file__, "day11.txt")
         )
-        self.universe: Universe = Universe.create(self.solver.input_lines)
+        self.universe: Universe = (
+            self.solver.universe
+        )  # Universe.create(self.solver.input_lines)
         self.original_galaxies: List[Galaxy] = [
             Galaxy(1, 0, 3),
             Galaxy(2, 1, 7),
@@ -97,3 +99,29 @@ class TestUniverse(unittest.TestCase):
         # for dict in shortest_paths:
         #     print(dict)
         self.assertTrue(total_sum == 374)
+
+
+class TestUniverseTask2(unittest.TestCase):
+    def test_expansion_by_10(self) -> None:
+        solver: Day11Solver = Day11Solver(
+            compute_path_to_input_file(__file__, "day11.txt"),
+            nb_replacement_empty_space=10,
+        )
+        shortest_paths: List[Dict[str, int]] = solver.universe.compute_shortest_paths()
+        total_sum: int = sum(map(lambda x: x["dist"], shortest_paths))
+        print(
+            f"The sum of the lengths of the shortest path between every pair of galaxies amounts to {total_sum}."
+        )
+        self.assertTrue(total_sum == 1030)
+
+    def test_expansion_by_100(self) -> None:
+        solver: Day11Solver = Day11Solver(
+            compute_path_to_input_file(__file__, "day11.txt"),
+            nb_replacement_empty_space=100,
+        )
+        shortest_paths: List[Dict[str, int]] = solver.universe.compute_shortest_paths()
+        total_sum: int = sum(map(lambda x: x["dist"], shortest_paths))
+        print(
+            f"The sum of the lengths of the shortest path between every pair of galaxies amounts to {total_sum}."
+        )
+        self.assertTrue(total_sum == 8410)

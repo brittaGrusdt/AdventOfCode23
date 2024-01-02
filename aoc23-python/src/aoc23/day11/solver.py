@@ -6,9 +6,13 @@ from aoc23.utils.solver import Solver
 
 
 class Day11Solver(Solver):
-    def __init__(self, path_to_input_file: Path) -> None:
+    def __init__(
+        self, path_to_input_file: Path, nb_replacement_empty_space: int = 2
+    ) -> None:
         super().__init__(path_to_input_file)
-        self.universe: Universe = Universe.create(self.input_lines)
+        self.universe: Universe = Universe.create(
+            self.input_lines, nb_replacement_empty_space
+        )
 
     def run_task1(self) -> None:
         shortest_paths: List[Dict[str, int]] = self.universe.compute_shortest_paths()
@@ -18,4 +22,5 @@ class Day11Solver(Solver):
         )
 
     def run_task2(self) -> None:
-        pass
+        self.universe: Universe = Universe.create(self.input_lines, 1000000)
+        self.run_task1()
